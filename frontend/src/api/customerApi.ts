@@ -1,10 +1,13 @@
+const API = import.meta.env.VITE_API_URL;
+
+
 export async function getCustomers() {
-  const res = await fetch('/api/customers');
+  const res = await fetch('{API}/api/customers');
   return res.json();
 }
 
 export async function createCustomer(name: string) {
-  const res = await fetch('/api/customers', {
+  const res = await fetch('{API}/api/customers', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name})
@@ -13,7 +16,7 @@ export async function createCustomer(name: string) {
 }
 
 export async function deleteCustomer(customerId: string) {
-    const res = await fetch(`/api/customers/${customerId}`, {
+    const res = await fetch(`{API}/api/customers/${customerId}`, {
         method: 'DELETE',
     });
     return res.json();
