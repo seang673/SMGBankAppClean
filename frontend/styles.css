@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap');
+ 
+/* ─── Reset ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+/* ─── Design Tokens ──────────────────────────────────── */
+:root {
+  --ink:        #0f0f0f;
+  --paper:      #f5f1eb;
+  --cream:      #ede8df;
+  --gold:       #b8860b;
+  --gold-light: #d4a017;
+  --muted:      #7a7065;
+  --border:     #c8bfb0;
+  --error:      #8b2020;
+  --success:    #1a5c3a;
+}
+ 
+/* ─── Body ───────────────────────────────────────────── */
+body {
+  font-family: 'DM Mono', monospace;
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,          transparent 27px,
+    rgba(184,134,11,0.07) 27px,
+    rgba(184,134,11,0.07) 28px
+  );
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: var(--ink);
+}
+ 
+/* ─── Page Layout ────────────────────────────────────── */
+.page {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+ 
+/* ─── Bank Header ────────────────────────────────────── */
+.bank-header {
+  text-align: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--gold);
+  position: relative;
+}
+ 
+.bank-header::before,
+.bank-header::after {
+  content: '◆';
+  position: absolute;
+  bottom: -0.55rem;
+  font-size: 0.65rem;
+  color: var(--gold);
+  background: var(--paper);
+  padding: 0 0.4rem;
+}
+.bank-header::before { left: 0; }
+.bank-header::after  { right: 0; }
+ 
+.bank-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+ 
+.bank-name em {
+  font-style: italic;
+  color: var(--gold);
+}
+ 
+.bank-tagline {
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+ 
+/* ─── Toast Notification ─────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(4rem);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-left: 3px solid var(--gold);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 99;
+}
+ 
+.toast.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+ 
+.toast.error {
+  border-left-color: var(--error);
+}

@@ -6,6 +6,7 @@ import CreateAccountForm from './components/CreateAccountForm'
 import CreateCustomerForm from './components/CreateCustomerForm'
 import CustomerList from './components/CustomerList'
 import AccountList from './components/AccountList'
+import TransactionPanel from './components/TransactionPanel'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/accounts" element={<AccountList />} />
           <Route path="/create-customer" element={<CreateCustomerForm />} />
           <Route path="/create-account" element={<CreateAccountForm />} />
+          <Route path="/transactions" element={<TransactionPanel />} />
           <Route path="/" element={<Dashboard />} />
         </Routes>
 
