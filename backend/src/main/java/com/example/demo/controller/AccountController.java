@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.CreateAccount;
 import com.example.demo.model.Account;
 import com.example.demo.model.Customer;
 import com.example.demo.model.SavingsAccount;
@@ -35,16 +37,15 @@ public class AccountController {
         return ResponseEntity.ok(accountService.getAccount(id));
     }
 
-    @PostMapping
-    public ResponseEntity<?> createAccount(
-            @RequestParam String customerId,
-            @RequestParam double balance,
-            @RequestParam String type) {
-
-        return ResponseEntity.ok(
-                accountService.createAccount(customerId, balance, type)
+    @PostMapping("")
+    public Account createAccount(@RequestBody CreateAccount request) {
+        return accountService.createAccount(
+            request.getCustomerId(),
+            request.getInitialBalance(),
+            request.getAccountType()
         );
     }
+
 
     @PostMapping("/{id}/deposit")
     public ResponseEntity<?> deposit(@PathVariable String id, @RequestParam double amount) {

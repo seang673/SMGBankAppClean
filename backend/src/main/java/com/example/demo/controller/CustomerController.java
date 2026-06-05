@@ -7,10 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.CreateCustomer;
+import com.example.demo.model.Customer;
 import com.example.demo.service.CustomerService;
 
 import jakarta.annotation.Generated;
@@ -36,9 +39,11 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.getPremiumCustomers());
     }
     @PostMapping("")
-    public ResponseEntity<?> createCustomer(@RequestParam String name) {
-        return ResponseEntity.ok(customerService.createCustomer(name));
+    public Customer createCustomer(@RequestBody CreateCustomer request) {
+        return customerService.createCustomer(request.getName());
     }
+
+    
     @PutMapping("/{id}")
     public ResponseEntity<?> updateCustomer(@PathVariable String id, @RequestParam String name) {
         return ResponseEntity.ok(customerService.updateCustomer(id, name));
