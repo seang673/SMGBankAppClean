@@ -6,6 +6,9 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 
 import jakarta.annotation.PostConstruct;
+
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 
@@ -24,6 +27,7 @@ public class DemoApplication {
 
         System.out.println("=== DEBUG: Spring Environment ===");
         System.out.println("ENV MONGODB_URI = " + System.getenv("MONGODB_URI"));
+        
 
         System.out.println("spring.application.name = " + env.getProperty("spring.application.name"));
         System.out.println("spring.data.mongodb.uri = " + env.getProperty("spring.data.mongodb.uri"));
