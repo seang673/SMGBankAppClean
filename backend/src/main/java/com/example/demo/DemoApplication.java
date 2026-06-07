@@ -21,7 +21,10 @@ public class DemoApplication {
 
     @EventListener(ApplicationReadyEvent.class)
     public void debugEnv() {
+
         System.out.println("=== DEBUG: Spring Environment ===");
+        System.out.println("ENV MONGODB_URI = " + System.getenv("MONGODB_URI"));
+
         System.out.println("spring.application.name = " + env.getProperty("spring.application.name"));
         System.out.println("spring.data.mongodb.uri = " + env.getProperty("spring.data.mongodb.uri"));
         System.out.println("spring.data.mongodb.database = " + env.getProperty("spring.data.mongodb.database"));
