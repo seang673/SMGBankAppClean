@@ -1,0 +1,47 @@
+/* Dashboard.css */
+body{
+  background-color:aquamarine;
+}
+.dashboard {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 1rem;
+  padding: 2.5rem;
+  max-width: 480px;
+  margin: 0 auto;
+  align-content: center;
+}
+ 
+/* Last button spans both columns, centered */
+.dash-btn:last-child {
+  grid-column: 1 / -1;
+}
+ 
+.dash-btn {
+  padding: 1.1rem 1.5rem;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-bottom: 2px solid var(--ink);
+  border-radius: 2px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--border);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-bottom-color 0.12s ease;
+}
+ 
+.dash-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--gold);
+  border-bottom-color: var(--gold);
+}
+ 
+.dash-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--gold);
+}

@@ -26,12 +26,10 @@ public class DemoApplication {
     public void debugEnv() {
 
         System.out.println("=== DEBUG: Spring Environment ===");
-        
-        System.out.println("spring.data.mongodb.ssl.enabled = " + env.getProperty("spring.data.mongodb.ssl.enabled"));
 
-        System.out.println("spring.data.mongodb.uri = " + env.getProperty("spring.data.mongodb.uri"));
+        System.out.println("spring.mongodb.uri = " + env.getProperty("spring.data.mongodb.uri"));
         System.out.println("spring.data.mongodb.database = " + env.getProperty("spring.data.mongodb.database"));
-        System.out.println("spring.data.mongodb.ssl.enabled = " + env.getProperty("spring.data.mongodb.ssl.enabled"));
+        System.out.println("spring.mongodb.ssl.enabled = " + env.getProperty("spring.data.mongodb.ssl.enabled"));
 
     }
 }

@@ -1,61 +1,32 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import "../dashboard.css";
+ 
+const NAV_ITEMS = [
+  { label: "Customers",       path: "/customers"       },
+  { label: "Accounts",        path: "/accounts"        },
+  { label: "Create Customer", path: "/create-customer" },
+  { label: "Create Account",  path: "/create-account"  },
+  { label: "Transactions",    path: "/transactions"    },
+];
+ 
 export default function Dashboard() {
   const navigate = useNavigate();
-
+ 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        gap: "20px",
-        padding: "40px",
-      }}
-    >
-      <button
-        onClick={() => navigate("/customers")}
-        style={buttonStyle}
-      >
-        Customers
-      </button>
-
-      <button
-        onClick={() => navigate("/accounts")}
-        style={buttonStyle}
-      >
-        Accounts
-      </button>
-
-      <button
-        onClick={() => navigate("/create-customer")}
-        style={buttonStyle}
-      >
-        Create Customer
-      </button>
-
-      <button
-        onClick={() => navigate("/create-account")}
-        style={buttonStyle}
-      >
-        Create Account
-      </button>
-
-      <button
-        onClick={() => navigate("/transactions")}
-        style={buttonStyle}
-      >
-        Transactions
-      </button>
+    
+    <div className="dashboard">
+      {NAV_ITEMS.map(({ label, path }) => (
+        <button
+          key={path}
+          className="dash-btn"
+          onClick={() => navigate(path)}
+        >
+          {label}
+        </button>
+      ))}
     </div>
+
   );
 }
-
-const buttonStyle: React.CSSProperties = {
-  padding: "14px 22px",
-  fontSize: "16px",
-  borderRadius: "8px",
-  border: "1px solid #ccc",
-  cursor: "pointer",
-  backgroundColor: "#f5f5f5",
-  transition: "0.2s",
-};
+ 
