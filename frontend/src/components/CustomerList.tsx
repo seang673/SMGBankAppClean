@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {getCustomers, deleteCustomer} from '../api/customerApi';
 
 export default function CustomerList() {
@@ -45,15 +45,3 @@ export default function CustomerList() {
     </div>
   );
 }
-
-const thStyle: React.CSSProperties = {
-  border: "1px solid #ccc",
-  padding: "8px",
-  background: "#f5f5f5",
-  textAlign: "left",
-};
-
-const tdStyle: React.CSSProperties = {
-  border: "1px solid #ccc",
-  padding: "8px",
-};
