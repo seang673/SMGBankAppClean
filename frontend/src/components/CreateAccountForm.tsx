@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createAccount } from "../api/accountApi";
+import { getCustomers } from "../api/customerApi";
 
 export default function CreateAccountForm() {
+  const [customers, setCustomers] = useState<any[]>([]);
   const [customerId, setCustomerId] = useState("");
   const [balance, setBalance] = useState(0);
   const [type, setType] = useState("checking");
+
+  useEffect(() => {
+    getCustomers().then(setCustomers);
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -25,13 +31,20 @@ export default function CreateAccountForm() {
       <h2 style={styles.title}>Open New Account</h2>
 
       <form onSubmit={handleSubmit} style={styles.form}>
-        <label style={styles.label}>Customer ID</label>
-        <input
+        <label style={styles.label}>Customer</label>
+        <select
           style={styles.input}
           value={customerId}
           onChange={(e) => setCustomerId(e.target.value)}
-          placeholder="Enter customer ID"
-        />
+          required
+        >
+          <option value="">Select a customer</option>
+          {customers.map((c: any) => (
+            <option key={c.custId} value={c.custId}>
+              #{c.customerNumber} — {c.name}
+            </option>
+          ))}
+        </select>
 
         <label style={styles.label}>Initial Balance</label>
         <input

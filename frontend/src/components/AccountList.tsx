@@ -33,11 +33,11 @@ export default function AccountList() {
 
           <tbody>
             {accounts.map((account: any) => (
-              <tr key={account.id}>
-                <td style={tdStyle}>{account.id}</td>
+              <tr key={account.accId}>
+                <td style={tdStyle}>{account.accId}</td>
                 <td style={tdStyle}>{account.type}</td>
                 <td style={tdStyle}>${account.balance}</td>
-                <td style={tdStyle}>{account.customerNumber}</td>
+                <td style={tdStyle}>{account.customerId}</td>
                 <td style={tdStyle}>
                   <button onClick={() => deleteAccount(account.accId)}>
                     Delete
