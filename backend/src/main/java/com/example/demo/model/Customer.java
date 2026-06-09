@@ -13,6 +13,7 @@ public class Customer {
 
     @Id
     private String custId;
+    private int customerNumber;
 
     private String name;
     private boolean isPremium = false;
@@ -36,6 +37,14 @@ public class Customer {
 
     public String getName() {
         return name;
+    }
+
+    public int getCustomerNumber() {
+        return customerNumber;
+    }
+
+    public void setCustomerNumber(int customerNumber) {
+        this.customerNumber = customerNumber;
     }
 
     public void setName(String name) {

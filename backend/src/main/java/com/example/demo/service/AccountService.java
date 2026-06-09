@@ -6,9 +6,6 @@ import com.example.demo.model.SavingsAccount;
 import com.example.demo.repository.AccountRepository;
 import com.example.demo.repository.CustomerRepository;
 
-import java.util.UUID;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,10 +13,12 @@ public class AccountService {
 
     private final AccountRepository accountRepo;
     private final CustomerRepository customerRepo;
+    private final CounterService counterService;
 
-    public AccountService(AccountRepository accountRepo, CustomerRepository customerRepo) {
+    public AccountService(AccountRepository accountRepo, CustomerRepository customerRepo, CounterService counterService) {
         this.accountRepo = accountRepo;
         this.customerRepo = customerRepo;
+        this.counterService = counterService;
     }
 
     public Account getAccount(String id) {
@@ -42,6 +41,7 @@ public class AccountService {
             default -> throw new RuntimeException("Invalid account type");
         };
 
+        account.setAccountNumber(counterService.getNextSequence("accountNumber"));
         return accountRepo.save(account);
     }
 

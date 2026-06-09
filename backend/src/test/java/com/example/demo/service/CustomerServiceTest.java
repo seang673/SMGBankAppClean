@@ -31,6 +31,9 @@ class CustomerServiceTest {
     @Mock
     private AccountRepository accountRepo;
 
+    @Mock
+    private CounterService counterService;
+
     @InjectMocks
     private CustomerService customerService;
 
@@ -93,7 +96,7 @@ class CustomerServiceTest {
         when(customerRepo.save(any(Customer.class))).thenReturn(newCustomer);
 
         // WHEN: Create a new customer
-        Customer result = customerService.createCustomer("Bob Johnson");
+        Customer result = customerService.createCustomer(newCustomer);
 
         // THEN: Verify the created customer
         assertNotNull(result);

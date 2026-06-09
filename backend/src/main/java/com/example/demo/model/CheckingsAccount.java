@@ -19,4 +19,8 @@ public class CheckingsAccount extends Account {
         return true;
     }
 
+    @Override
+    public String getType() {
+        return "checking";
+    }
 }

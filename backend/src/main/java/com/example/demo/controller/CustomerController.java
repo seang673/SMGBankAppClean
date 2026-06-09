@@ -39,9 +39,10 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.getPremiumCustomers());
     }
     @PostMapping("")
-    public Customer createCustomer(@RequestBody CreateCustomer request) {
-        return customerService.createCustomer(request.getName());
+    public Customer createCustomer(@RequestBody Customer customer) {
+        return customerService.createCustomer(customer);
     }
+
 
     
     @PutMapping("/{id}")

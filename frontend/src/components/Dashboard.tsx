@@ -14,7 +14,6 @@ export default function Dashboard() {
   const navigate = useNavigate();
  
   return (
-    
     <div className="dashboard">
       {NAV_ITEMS.map(({ label, path }) => (
         <button

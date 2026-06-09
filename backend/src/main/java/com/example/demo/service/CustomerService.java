@@ -17,6 +17,9 @@ public class CustomerService {
     @Autowired
     private final AccountRepository accountRepository;
 
+    @Autowired
+    private CounterService counterService;
+
     public CustomerService(CustomerRepository customerRepository, AccountRepository accountRepository) {
         this.customerRepository = customerRepository;
         this.accountRepository = accountRepository;
@@ -40,8 +43,9 @@ public class CustomerService {
         return customerRepository.findByIsPremium(true);
     }
 
-    public Customer createCustomer(String name) {
-        Customer customer = new Customer(name);
+     public Customer createCustomer(Customer customer) {
+        int nextId = counterService.getNextSequence("customerNumber");
+        customer.setCustomerNumber(nextId);
         return customerRepository.save(customer);
     }
 

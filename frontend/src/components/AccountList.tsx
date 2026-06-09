@@ -37,9 +37,9 @@ export default function AccountList() {
                 <td style={tdStyle}>{account.id}</td>
                 <td style={tdStyle}>{account.type}</td>
                 <td style={tdStyle}>${account.balance}</td>
-                <td style={tdStyle}>{account.customerId}</td>
+                <td style={tdStyle}>{account.customerNumber}</td>
                 <td style={tdStyle}>
-                  <button onClick={() => deleteAccount(account.id)}>
+                  <button onClick={() => deleteAccount(account.accId)}>
                     Delete
                   </button>
                 </td>

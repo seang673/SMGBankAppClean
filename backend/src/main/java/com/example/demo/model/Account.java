@@ -7,6 +7,7 @@ public abstract class Account {
     @Id
     private String accId;
 
+    private int accountNumber;
     private String customerId;
     private double balance;
 
@@ -33,6 +34,14 @@ public abstract class Account {
         this.accId = accId;
     }
 
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
     public String getCustomerId() {
         return customerId;
     }
@@ -46,5 +55,7 @@ public abstract class Account {
     }
 
     public abstract boolean withdraw(double amount);
+
+    public abstract String getType();
 }
 

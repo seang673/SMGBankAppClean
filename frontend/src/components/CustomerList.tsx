@@ -20,24 +20,22 @@ export default function CustomerList() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <table style={{ borderCollapse: "collapse", width: "100%" }}>
+        <table>
           <thead>
             <tr>
-              <th style={thStyle}>ID</th>
-              <th style={thStyle}>Name</th>
-              <th style={thStyle}>Actions</th>
+              <th>Customer #</th>
+              <th>Name</th>
+              <th>Actions</th>
             </tr>
           </thead>
 
           <tbody>
             {customers.map((customer: any) => (
               <tr key={customer.id}>
-                <td style={tdStyle}>{customer.id}</td>
-                <td style={tdStyle}>{customer.name}</td>
-                <td style={tdStyle}>
-                  <button onClick={() => deleteCustomer(customer.id)}>
-                    Delete
-                  </button>
+                <td>{customer.customerNumber}</td>
+                <td>{customer.name}</td>
+                <td>
+                  <button onClick={() => deleteCustomer(customer.id)}>Delete</button>
                 </td>
               </tr>
             ))}
