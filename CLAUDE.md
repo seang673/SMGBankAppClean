@@ -69,6 +69,11 @@ The frontend calls the backend via REST. The API base URL is configured through 
 
 React Router is configured in `App.tsx`. API calls are centralized in `src/api/customerApi.ts` and `src/api/accountApi.ts` — they read `VITE_API_URL` and call fetch directly (no HTTP client library).
 
+**Component notes:**
+- `CustomerList` — displays `customerNumber` (sequential int) in the ID column, not the raw MongoDB `custId`. Deletes by `customer.id` (Spring serializes `custId` as `id` via the default `id` alias — use `customer.custId` if that alias is not present).
+- `AccountList` — displays `account.accId` for the ID column and `account.customerId` for the owner column. The Account JSON uses `accId` (matching the Java field name) not `id`. Deletes by `account.accId`.
+- `CreateAccountForm` — fetches all customers on mount and presents them in a `<select>` dropdown showing `#customerNumber — name`; submits the MongoDB `custId` as the `customerId` payload field. Never accept a free-text customer ID input — users will enter the sequential number rather than the hex string and the backend lookup will fail.
+
 ### Sequential ID Strategy
 MongoDB generates hex string `_id` values (`custId` on Customer, `accId` on Account). To provide human-readable sequential integers, `CounterService` uses MongoDB's atomic `findAndModify` on a `counters` collection:
 - `"customerNumber"` → `Customer.customerNumber` (set in `CustomerService.createCustomer`)
